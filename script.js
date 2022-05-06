@@ -156,8 +156,8 @@ function animate() {
   if (rectangularCollision({
     rectangle1: enemy,
     rectangle2: player
-    }) && player.isAttacking) {
-  player.isAttacking = false;
+    }) && enemy.isAttacking) {
+  enemy.isAttacking = false;
   console.log('contact');
 }
 }
