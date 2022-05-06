@@ -21,6 +21,7 @@ class Sprite {
       height: 50
     };
     this.color = color;
+    this.isAttacking;
   }
 
   drawSprite() {
@@ -42,6 +43,13 @@ class Sprite {
     } else {
       this.velocity.y += gravity;
     }
+  }
+
+  attack() {
+    this.isAttacking = true;
+    setTimeout(() => {
+      this.isAttacking = false;
+    }, 100);
   }
 }
 
@@ -118,7 +126,8 @@ function animate() {
   if (player.attackBox.position.x + player.attackBox.width >= enemy.position.x 
     && player.attackBox.position.x <= enemy.position.x + enemy.width && 
     player.attackBox.position.y + player.attackBox.height >= enemy.position.y
-    && player.attackBox.position.y <= enemy.position.y + enemy.height) {
+    && player.attackBox.position.y <= enemy.position.y + enemy.height &&
+    player.isAttacking) {
     console.log('contact');
   }
 }
@@ -138,17 +147,21 @@ window.addEventListener('keydown', (e) => {
     case 'w':
       player.velocity.y = -20;
       break;
+    case ' ':
+      player.attack();
+      break;
     case 'ArrowRight':
-        keys.ArrowRight.pressed = true;
-        enemy.lastKey = 'ArrowRight';
-        break;
+      keys.ArrowRight.pressed = true;
+      enemy.lastKey = 'ArrowRight';
+      break;
     case 'ArrowLeft':
-        keys.ArrowLeft.pressed = true;
-        enemy.lastKey = 'ArrowLeft';
-        break;
+      keys.ArrowLeft.pressed = true;
+      enemy.lastKey = 'ArrowLeft';
+      break;
     case 'ArrowUp':
-        enemy.velocity.y = -20;
-        break;  
+      enemy.velocity.y = -20;
+      break;
+
   }
   // console.log(e.key);
 });
