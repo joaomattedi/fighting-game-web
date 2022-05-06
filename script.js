@@ -29,10 +29,10 @@ class Sprite {
     context.fillRect(this.position.x,this.position.y,this.width,this.height);
 
     //attack box
-    if (this.isAttacking) {
+    // if (this.isAttacking) {
       context.fillStyle = 'green';
       context.fillRect(this.attackBox.position.x,this.attackBox.position.y,this.attackBox.width,this.attackBox.height);
-    }
+    // }
   }
 
   update() {
