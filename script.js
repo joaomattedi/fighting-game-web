@@ -29,8 +29,10 @@ class Sprite {
     context.fillRect(this.position.x,this.position.y,this.width,this.height);
 
     //attack box
-    context.fillStyle = 'green';
-    context.fillRect(this.attackBox.position.x,this.attackBox.position.y,this.attackBox.width,this.attackBox.height);
+    if (this.isAttacking) {
+      context.fillStyle = 'green';
+      context.fillRect(this.attackBox.position.x,this.attackBox.position.y,this.attackBox.width,this.attackBox.height);
+    }
   }
 
   update() {
@@ -128,6 +130,7 @@ function animate() {
     player.attackBox.position.y + player.attackBox.height >= enemy.position.y
     && player.attackBox.position.y <= enemy.position.y + enemy.height &&
     player.isAttacking) {
+    player.isAttacking = false;
     console.log('contact');
   }
 }
