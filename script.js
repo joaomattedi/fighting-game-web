@@ -26,6 +26,7 @@ class Sprite {
     context.fillRect(this.position.x,this.position.y,50,this.height);
 
     //attack box
+    context.fillStyle = 'green';
     context.fillRect(this.attackBox.position.x,this.attackBox.position.y,this.attackBox.width,this.attackBox.height);
   }
 
