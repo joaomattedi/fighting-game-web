@@ -121,6 +121,21 @@ function rectangularCollision({rectangle1, rectangle2}) {
     && rectangle1.attackBox.position.y <= rectangle2.position.y + rectangle2.height)
 }
 
+let timer = 10;
+function decreaseTimer() {
+  setTimeout(decreaseTimer, 1000)
+  if (timer > 0) {
+    timer -= 1;
+    document.querySelector('#timer').innerHTML = timer;
+  }
+
+  if (player.health === enemy.health) {
+    
+  }
+}
+
+decreaseTimer();
+
 function animate() {
   context.fillStyle = 'black';
   context.fillRect(0,0,canvas.width,canvas.height);
