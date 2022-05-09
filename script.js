@@ -121,6 +121,16 @@ function rectangularCollision({rectangle1, rectangle2}) {
     && rectangle1.attackBox.position.y <= rectangle2.position.y + rectangle2.height)
 }
 
+function determineWinner({ player, enemy }) {
+  if (player.health === enemy.health) {
+    document.querySelector('#display-text').innerHTML = 'TIE';
+  } else if (player.health > enemy.health) {
+    document.querySelector('#display-text').innerHTML = 'Player 1 wins';
+  } else if (enemy.health > player.health) {
+    document.querySelector('#display-text').innerHTML = 'Player 2 wins';
+  }
+}
+
 let timer = 60;
 function decreaseTimer() {
   setTimeout(decreaseTimer, 1000)
@@ -131,13 +141,7 @@ function decreaseTimer() {
 
   if (timer === 0) {
     document.querySelector('#display-text').style.display = 'flex';
-    if (player.health === enemy.health) {
-      document.querySelector('#display-text').innerHTML = 'TIE';
-    } else if (player.health > enemy.health) {
-      document.querySelector('#display-text').innerHTML = 'Player 1 wins';
-    } else if (enemy.health > player.health) {
-      document.querySelector('#display-text').innerHTML = 'Player 2 wins';
-    }
+    determineWinner({player,enemy});
   }
 }
 
@@ -184,7 +188,9 @@ function animate() {
     enemy.isAttacking = false;
     player.health -= 20;
     document.querySelector('#player-health').style.width = player.health + '%';
-}
+  }
+
+  
 }
 
 animate();
