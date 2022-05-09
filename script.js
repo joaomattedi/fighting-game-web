@@ -26,6 +26,7 @@ class Sprite {
     };
     this.color = color;
     this.isAttacking;
+    this.health = 100;
   }
 
   drawSprite() {
@@ -120,6 +121,21 @@ function rectangularCollision({rectangle1, rectangle2}) {
     && rectangle1.attackBox.position.y <= rectangle2.position.y + rectangle2.height)
 }
 
+let timer = 10;
+function decreaseTimer() {
+  setTimeout(decreaseTimer, 1000)
+  if (timer > 0) {
+    timer -= 1;
+    document.querySelector('#timer').innerHTML = timer;
+  }
+
+  if (player.health === enemy.health) {
+    
+  }
+}
+
+decreaseTimer();
+
 function animate() {
   context.fillStyle = 'black';
   context.fillRect(0,0,canvas.width,canvas.height);
@@ -151,14 +167,16 @@ function animate() {
       rectangle2: enemy
       }) && player.isAttacking) {
     player.isAttacking = false;
-    console.log('contact');
+    enemy.health -= 20;
+    document.querySelector('#enemy-health').style.width = enemy.health + '%'; 
   }
   if (rectangularCollision({
-    rectangle1: enemy,
-    rectangle2: player
-    }) && enemy.isAttacking) {
-  enemy.isAttacking = false;
-  console.log('contact');
+      rectangle1: enemy,
+      rectangle2: player
+      }) && enemy.isAttacking) {
+    enemy.isAttacking = false;
+    player.health -= 20;
+    document.querySelector('#player-health').style.width = player.health + '%';
 }
 }
 
