@@ -121,7 +121,7 @@ function rectangularCollision({rectangle1, rectangle2}) {
     && rectangle1.attackBox.position.y <= rectangle2.position.y + rectangle2.height)
 }
 
-let timer = 10;
+let timer = 60;
 function decreaseTimer() {
   setTimeout(decreaseTimer, 1000)
   if (timer > 0) {
@@ -129,8 +129,15 @@ function decreaseTimer() {
     document.querySelector('#timer').innerHTML = timer;
   }
 
-  if (player.health === enemy.health) {
-    
+  if (timer === 0) {
+    document.querySelector('#display-text').style.display = 'flex';
+    if (player.health === enemy.health) {
+      document.querySelector('#display-text').innerHTML = 'TIE';
+    } else if (player.health > enemy.health) {
+      document.querySelector('#display-text').innerHTML = 'Player 1 wins';
+    } else if (enemy.health > player.health) {
+      document.querySelector('#display-text').innerHTML = 'Player 2 wins';
+    }
   }
 }
 
