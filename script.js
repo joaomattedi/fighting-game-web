@@ -26,6 +26,7 @@ class Sprite {
     };
     this.color = color;
     this.isAttacking;
+    this.health = 100;
   }
 
   drawSprite() {
@@ -151,14 +152,16 @@ function animate() {
       rectangle2: enemy
       }) && player.isAttacking) {
     player.isAttacking = false;
-    document.querySelector('#enemy-health').style.width = '20%'; 
+    enemy.health -= 20;
+    document.querySelector('#enemy-health').style.width = enemy.health + '%'; 
   }
   if (rectangularCollision({
-    rectangle1: enemy,
-    rectangle2: player
-    }) && enemy.isAttacking) {
-  enemy.isAttacking = false;
-  console.log('contact');
+      rectangle1: enemy,
+      rectangle2: player
+      }) && enemy.isAttacking) {
+    enemy.isAttacking = false;
+    player.health -= 20;
+    document.querySelector('#player-health').style.width = player.health + '%';
 }
 }
 
