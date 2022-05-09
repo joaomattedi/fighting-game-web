@@ -151,7 +151,7 @@ function animate() {
       rectangle2: enemy
       }) && player.isAttacking) {
     player.isAttacking = false;
-    console.log('contact');
+    document.querySelector('#enemy-health').style.width = '20%'; 
   }
   if (rectangularCollision({
     rectangle1: enemy,
