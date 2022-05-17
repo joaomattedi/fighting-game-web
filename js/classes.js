@@ -8,6 +8,7 @@ class Sprite {
   }
 
   drawSprite() {
+    context.drawImage(this.image, this.position.x, this.position.y);
   }
 
   update() {
