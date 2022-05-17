@@ -13,15 +13,17 @@ const background = new Sprite({
     x:0,
     y:0,
   },
-  imageSrc: './GameAssets/background.png'
+  imageSrc: './GameAssets/background.png',
+  scale: 1,
 })
 
 const shop = new Sprite({
   position: {
-    x:0,
-    y:0,
+    x: 630,
+    y: 128,
   },
-  imageSrc: './GameAssets/shop.png'
+  imageSrc: './GameAssets/shop.png',
+  scale: 2.75
 })
 
 const player = new Fighter({

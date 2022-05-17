@@ -9,7 +9,13 @@ class Sprite {
   }
 
   drawSprite() {
-    context.drawImage(this.image, this.position.x, this.position.y, this.image.width, this.image.height);
+    context.drawImage(
+      this.image,
+      this.position.x,
+      this.position.y,
+      this.image.width * this.scale,
+      this.image.height * this.scale
+      );
   }
 
   update() {
