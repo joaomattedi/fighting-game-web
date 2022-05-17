@@ -1,14 +1,15 @@
 class Sprite {
-  constructor({ position, imageSrc }) {
+  constructor({ position, imageSrc, scale }) {
     this.position = position;
     this.width = 50;
     this.height = 150;
     this.image = new Image();
     this.image.src = imageSrc;
+    this.scale = scale
   }
 
   drawSprite() {
-    context.drawImage(this.image, this.position.x, this.position.y);
+    context.drawImage(this.image, this.position.x, this.position.y, this.image.width, this.image.height);
   }
 
   update() {

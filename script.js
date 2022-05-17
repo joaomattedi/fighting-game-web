@@ -16,6 +16,14 @@ const background = new Sprite({
   imageSrc: './GameAssets/background.png'
 })
 
+const shop = new Sprite({
+  position: {
+    x:0,
+    y:0,
+  },
+  imageSrc: './GameAssets/shop.png'
+})
+
 const player = new Fighter({
   position: {
     x: 0,
@@ -74,6 +82,7 @@ function animate() {
   context.fillStyle = 'black';
   context.fillRect(0,0,canvas.width,canvas.height);
   background.update();
+  shop.update();
   player.update();
   enemy.update();
   window.requestAnimationFrame(animate)
